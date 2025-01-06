@@ -1,0 +1,3 @@
+include:
+  - project: "bango/core-platform-tooling/cicd-pipeline-manifests"
+    file: "/pipelines/terraform_publish/terraform_publish.yml"
