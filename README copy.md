@@ -9,7 +9,7 @@ Use this module by adding a `module` configuration block, setting the `source` p
 
 ```hcl
 module "local_module_name" {
-  source = "gitlab.com/bango/aws-dynamodb-table/aws"
+  source = "../../"
   version = "<latest_version>" # e.g "1.0.1"
 
   aws_region  = var.aws_region
