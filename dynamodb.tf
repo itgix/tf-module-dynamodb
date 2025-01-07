@@ -35,17 +35,7 @@ resource "null_resource" "replica_deletion_protection" {
     replicas                    = join(",", each.value.replicas)
   }
 
-  provisioner "local-exec" {
-    interpreter = ["/bin/sh", "-c"]
-    working_dir = path.module
-    environment = {
-      TABLE_NAME                  = "ddb-global-${var.environment}-${each.value.table_name_suffix}"
-      DELETION_PROTECTION_ENABLED = each.value.deletion_protection_enabled
-      REPLICAS                    = join(" ", each.value.replicas)
-      IAM_ROLE                    = var.assume_role_arn
-    }
-    command = "./delete-protection.sh"
-  }
+
 
   depends_on = [module.dynamodb_table]
 }
